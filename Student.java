@@ -1,9 +1,7 @@
-package extend.human;
+package polymorphism.human;
 
-// Humanクラスを継承したStudentクラス
+// Humanクラスを継承
 public class Student extends Human {
-
-    // サブクラスで追加したフィールド
     private int score;
 
     public Student(String name, int age, int score) {
@@ -11,9 +9,10 @@ public class Student extends Human {
         super(name, age);
         this.score = score;
     }
-    // サブクラスで追加したメソッド
-    public String getStudentProfile() {
-        // 親インスタンスのフィールドをsuper変数で参照
+
+    // オーバーライドして、Studentクラス用に処理を変更
+    @Override
+    public String getProfile() {
         String profile = "年齢は" + super.age + "です。";
         profile += "学生で、テストの点数は" + this.score + "点です。";
         return profile;

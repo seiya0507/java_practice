@@ -1,10 +1,7 @@
-package extend.human;
+package polymorphism.human;
 
 public class Human {
-    // privateは自分自身からのみアクセス可能
-    private String name;]
-
-    // protectedはサブクラスからもアクセス可能
+    private String name;
     protected int age;
 
     public Human(String name, int age) {
@@ -12,11 +9,16 @@ public class Human {
         this.age = age;
     }
 
-    public String getName() {
+    // final修飾子が設定されているのでオーバーライド禁止
+    final public String getName() {
         return this.name;
     }
 
     public int getAge() {
         return this.age;
+    }
+
+    public String getProfile() {
+        return "名前は" + this.name + "、年齢は" + this.age + "です。";
     }
 }
