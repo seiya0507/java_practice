@@ -1,35 +1,34 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+List<Fruit> fruits = new ArrayList<>();
+fruits.add(new Fruit("りんご", 7));
+fruits.add(new Fruit("みかん", 15));
+fruits.add(new Fruit("いちご", 4));
+fruits.add(new Fruit("メロン", 8));
+fruits.add(new Fruit("ぶどう", 20));
+// 10個以下に絞り込まれたリストを作る
+List<Fruit> filtered = new ArrayList<>();
+// 拡張for文でfruitsをループ
+for (Fruit fruit : fruits) {
+  // if文で10個以下に絞る
+  if (fruit.getQuantity() <= 10) {
+    // 絞り込まれたリストに追加
+    filtered.add(fruit);
+  }
+}
+// 20個ずつ追加する
+List<Fruit> ordered = new ArrayList<>();
+for (Fruit fruit : filtered) {
+  ordered.add(fruit.order(20));
+}
+// 個数が少ない順に並べ替える
+ordered.sort(new Comparator<Fruit>() {
+  @Override
+  public int compare(Fruit f1, Fruit f2) {
+    return f1.getQuantity() - f2.getQuantity();
+  }
+});
 
-// ArrayListを生成する場合
-List<String> list1 = new ArrayList<String>();
-
-// LinkedListを生成する場合
-List<Integer> list2 = new LinkedList<Integer>();
-
-// 要素を追加する
-list1.add("りんご");
-list1.add("みかん");
-
-// 位置を指定して要素を追加する
-list1.add(1, "バナナ");
-
-// 要素を取得する
-list1.get(0);
-
-// 存在チェック (trueを返す)
-list1.contains("バナナ");
-
-// 存在チェック (falseを返す)
-list1.contains("なし");
-
-list1.size(); // 3を返す
-
-// 要素を削除する (要素が文字列の場合、文字列として同じであれば削除されます)
-list1.remove("バナナ");
-list1.remove("なし"); // 何もしない
-
-// 位置を指定して要素を削除する
-list1.remove(0);
-list1.remove(5); // コレクションの要素数より大きい位置を指定すると実行時エラー
+// 絞り込んで並べ替えたリストを拡張for文でループしながら出力する
+for (Fruit fruit : ordered) {
+  // 標準出力
+  System.out.println(fruit);
+}
