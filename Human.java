@@ -1,8 +1,19 @@
-public class Human {
+package extend.human;
 
-  public class HumanLeg {
-    public void kick() {
-      System.out.println("蹴る");
+public class Human {
+    private String name;
+    protected int age;
+
+    public Human(String name, int age) {
+        this.name = name;
+        this.age = age;
     }
-  }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getAge() {
+        return this.age;
+    }
 }
